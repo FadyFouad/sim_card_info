@@ -9,21 +9,35 @@ class MockSimCardInfoPlatform
     with MockPlatformInterfaceMixin
     implements SimCardInfoPlatform {
   @override
-  Future<List<SimInfo>?> getSimInfo() => Future.value([]);
+  Future<List<SimInfo>?> getSimInfo() => Future.value([
+        SimInfo(
+          carrierName: 'MockCarrier',
+          displayName: 'MockSIM',
+          slotIndex: '0',
+          number: '123',
+          countryIso: 'us',
+          countryPhonePrefix: '1',
+        )
+      ]);
 }
 
 void main() {
-  final SimCardInfoPlatform initialPlatform = SimCardInfoPlatform.instance;
-
-  test('$MethodChannelSimCardInfo is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelSimCardInfo>());
+  group('SimCardInfoPlatform', () {
+    test('default instance is MethodChannelSimCardInfo', () {
+      expect(SimCardInfoPlatform.instance, isA<MethodChannelSimCardInfo>());
+    });
   });
 
-  test('getPlatformVersion', () async {
-    SimCardInfo simCardInfoPlugin = SimCardInfo();
-    MockSimCardInfoPlatform fakePlatform = MockSimCardInfoPlatform();
-    SimCardInfoPlatform.instance = fakePlatform;
+  group('SimCardInfo delegation', () {
+    test('getSimInfo delegates to platform instance', () async {
+      final simCardInfo = SimCardInfo();
+      final mockPlatform = MockSimCardInfoPlatform();
+      SimCardInfoPlatform.instance = mockPlatform;
 
-    expect(await simCardInfoPlugin.getSimInfo(), '42');
+      final result = await simCardInfo.getSimInfo();
+      expect(result, isNotNull);
+      expect(result!.length, 1);
+      expect(result[0].carrierName, 'MockCarrier');
+    });
   });
 }

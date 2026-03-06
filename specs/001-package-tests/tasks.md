@@ -20,9 +20,9 @@ All test files are at repository root: `test/`
 
 **Purpose**: Create the new test file and clear broken placeholder tests from existing files.
 
-- [ ] T001 [P] Create `test/sim_info_test.dart` with file skeleton (import `flutter_test`, import `package:sim_card_info/sim_info.dart`, empty `main()`)
-- [ ] T002 [P] Replace body of `test/sim_card_info_method_channel_test.dart` — remove broken placeholder test (`expect(result, '42')`), keep file with `TestWidgetsFlutterBinding.ensureInitialized()` and empty `main()`
-- [ ] T003 [P] Replace body of `test/sim_card_info_test.dart` — remove broken placeholder test (`expect(result, '42')`), keep `MockSimCardInfoPlatform` stub and empty `main()`
+- [X] T001 [P] Create `test/sim_info_test.dart` with file skeleton (import `flutter_test`, import `package:sim_card_info/sim_info.dart`, empty `main()`)
+- [X] T002 [P] Replace body of `test/sim_card_info_method_channel_test.dart` — remove broken placeholder test (`expect(result, '42')`), keep file with `TestWidgetsFlutterBinding.ensureInitialized()` and empty `main()`
+- [X] T003 [P] Replace body of `test/sim_card_info_test.dart` — remove broken placeholder test (`expect(result, '42')`), keep `MockSimCardInfoPlatform` stub and empty `main()`
 
 ---
 
@@ -32,7 +32,7 @@ All test files are at repository root: `test/`
 
 **⚠️ CRITICAL**: Confirm this passes before writing any new test cases.
 
-- [ ] T004 Run `flutter test` from the repository root and confirm zero test failures with the cleaned files from Phase 1
+- [X] T004 Run `flutter test` from the repository root and confirm zero test failures with the cleaned files from Phase 1
 
 **Checkpoint**: Green baseline confirmed — user story test writing can now begin.
 
@@ -46,14 +46,14 @@ All test files are at repository root: `test/`
 
 ### Implementation
 
-- [ ] T005 [US1] Add shared fixture constant and `group('SimInfo', ...)` wrapper in `test/sim_info_test.dart`
-- [ ] T006 [US1] Write T-01: `fromJson` creates correct instance (assert all 6 fields) in `test/sim_info_test.dart`
-- [ ] T007 [US1] Write T-02: `slotIndex` is cast from `int` to `String` (`slotIndex: 0` in JSON → `"0"` in model) in `test/sim_info_test.dart`
-- [ ] T008 [US1] Write T-03: `toJson` round-trip fidelity (`SimInfo.fromJson(sim.toJson()) == sim`) in `test/sim_info_test.dart`
-- [ ] T009 [US1] Write T-04 and T-05: equal instances are `==`; differing instances are `!=` in `test/sim_info_test.dart`
-- [ ] T010 [US1] Write T-06: equal instances share `hashCode` in `test/sim_info_test.dart`
-- [ ] T011 [US1] Write T-07: `copyWith` overrides specified fields; unchanged fields retain original values in `test/sim_info_test.dart`
-- [ ] T012 [US1] Write T-08: `toString` output contains all 6 field names and their values in `test/sim_info_test.dart`
+- [X] T005 [US1] Add shared fixture constant and `group('SimInfo', ...)` wrapper in `test/sim_info_test.dart`
+- [X] T006 [US1] Write T-01: `fromJson` creates correct instance (assert all 6 fields) in `test/sim_info_test.dart`
+- [X] T007 [US1] Write T-02: `slotIndex` is cast from `int` to `String` (`slotIndex: 0` in JSON → `"0"` in model) in `test/sim_info_test.dart`
+- [X] T008 [US1] Write T-03: `toJson` round-trip fidelity (`SimInfo.fromJson(sim.toJson()) == sim`) in `test/sim_info_test.dart`
+- [X] T009 [US1] Write T-04 and T-05: equal instances are `==`; differing instances are `!=` in `test/sim_info_test.dart`
+- [X] T010 [US1] Write T-06: equal instances share `hashCode` in `test/sim_info_test.dart`
+- [X] T011 [US1] Write T-07: `copyWith` overrides specified fields; unchanged fields retain original values in `test/sim_info_test.dart`
+- [X] T012 [US1] Write T-08: `toString` output contains all 6 field names and their values in `test/sim_info_test.dart`
 
 **Checkpoint**: Run `flutter test test/sim_info_test.dart` — all 8 test cases pass. User Story 1 complete.
 
@@ -67,13 +67,13 @@ All test files are at repository root: `test/`
 
 ### Implementation
 
-- [ ] T013 [US2] Add `TestWidgetsFlutterBinding.ensureInitialized()`, `MethodChannelSimCardInfo` instance, `MethodChannel('sim_card_info')` constant, and `setUp`/`tearDown` hooks for mock handler cleanup in `test/sim_card_info_method_channel_test.dart`
-- [ ] T014 [US2] Write T-09: valid single-SIM JSON returns `List<SimInfo>` with correct count and all field values in `test/sim_card_info_method_channel_test.dart`
-- [ ] T015 [US2] Write T-10: null channel return yields `null` result from `getSimInfo()` in `test/sim_card_info_method_channel_test.dart`
-- [ ] T016 [US2] Write T-11: empty JSON array `"[]"` returns empty list (not `null`) in `test/sim_card_info_method_channel_test.dart`
-- [ ] T017 [US2] Write T-12: multi-SIM JSON array returns full list with both entries correctly parsed in `test/sim_card_info_method_channel_test.dart`
-- [ ] T018 [US2] Write T-13: mock handler throws `PlatformException`; assert `getSimInfo()` propagates it via `throwsA(isA<PlatformException>())` in `test/sim_card_info_method_channel_test.dart`
-- [ ] T019 [US2] Write T-14: mock handler returns `'not-valid-json'`; assert `getSimInfo()` throws `FormatException` via `throwsA(isA<FormatException>())` in `test/sim_card_info_method_channel_test.dart`
+- [X] T013 [US2] Add `TestWidgetsFlutterBinding.ensureInitialized()`, `MethodChannelSimCardInfo` instance, `MethodChannel('sim_card_info')` constant, and `setUp`/`tearDown` hooks for mock handler cleanup in `test/sim_card_info_method_channel_test.dart`
+- [X] T014 [US2] Write T-09: valid single-SIM JSON returns `List<SimInfo>` with correct count and all field values in `test/sim_card_info_method_channel_test.dart`
+- [X] T015 [US2] Write T-10: null channel return yields `null` result from `getSimInfo()` in `test/sim_card_info_method_channel_test.dart`
+- [X] T016 [US2] Write T-11: empty JSON array `"[]"` returns empty list (not `null`) in `test/sim_card_info_method_channel_test.dart`
+- [X] T017 [US2] Write T-12: multi-SIM JSON array returns full list with both entries correctly parsed in `test/sim_card_info_method_channel_test.dart`
+- [X] T018 [US2] Write T-13: mock handler throws `PlatformException`; assert `getSimInfo()` propagates it via `throwsA(isA<PlatformException>())` in `test/sim_card_info_method_channel_test.dart`
+- [X] T019 [US2] Write T-14: mock handler returns `'not-valid-json'`; assert `getSimInfo()` throws `FormatException` via `throwsA(isA<FormatException>())` in `test/sim_card_info_method_channel_test.dart`
 
 **Checkpoint**: Run `flutter test test/sim_card_info_method_channel_test.dart` — all 6 test cases pass. User Story 2 complete.
 
@@ -87,9 +87,9 @@ All test files are at repository root: `test/`
 
 ### Implementation
 
-- [ ] T020 [US3] Add imports (`flutter_test`, `plugin_platform_interface`, `sim_card_info.dart`, `sim_card_info_method_channel.dart`, `sim_card_info_platform_interface.dart`, `sim_info.dart`) and `MockSimCardInfoPlatform` class (using `MockPlatformInterfaceMixin`) in `test/sim_card_info_test.dart`
-- [ ] T021 [US3] Write T-15: assert `SimCardInfoPlatform.instance` is `isInstanceOf<MethodChannelSimCardInfo>()` in `test/sim_card_info_test.dart`
-- [ ] T022 [US3] Write T-16: register `MockSimCardInfoPlatform` returning a predefined `List<SimInfo>`; call `SimCardInfo().getSimInfo()`; assert returned list equals the mock's value in `test/sim_card_info_test.dart`
+- [X] T020 [US3] Add imports (`flutter_test`, `plugin_platform_interface`, `sim_card_info.dart`, `sim_card_info_method_channel.dart`, `sim_card_info_platform_interface.dart`, `sim_info.dart`) and `MockSimCardInfoPlatform` class (using `MockPlatformInterfaceMixin`) in `test/sim_card_info_test.dart`
+- [X] T021 [US3] Write T-15: assert `SimCardInfoPlatform.instance` is `isInstanceOf<MethodChannelSimCardInfo>()` in `test/sim_card_info_test.dart`
+- [X] T022 [US3] Write T-16: register `MockSimCardInfoPlatform` returning a predefined `List<SimInfo>`; call `SimCardInfo().getSimInfo()`; assert returned list equals the mock's value in `test/sim_card_info_test.dart`
 
 **Checkpoint**: Run `flutter test test/sim_card_info_test.dart` — both test cases pass. User Story 3 complete.
 
@@ -99,9 +99,9 @@ All test files are at repository root: `test/`
 
 **Purpose**: Full suite validation, lint compliance, and spec acceptance criteria sign-off.
 
-- [ ] T023 [P] Run `flutter test` from repository root — assert all 16 test cases pass with zero failures (SC-001)
-- [ ] T024 [P] Run `flutter analyze` from repository root — assert zero errors or warnings in test files
-- [ ] T025 Verify acceptance against spec success criteria: SC-002 (≥7 SimInfo tests), SC-003 (≥6 channel tests), SC-004 (≥3 platform tests), SC-005 (no real native calls), SC-006 (broken placeholders replaced)
+- [X] T023 [P] Run `flutter test` from repository root — assert all 16 test cases pass with zero failures (SC-001)
+- [X] T024 [P] Run `flutter analyze` from repository root — assert zero errors or warnings in test files
+- [X] T025 Verify acceptance against spec success criteria: SC-002 (≥7 SimInfo tests), SC-003 (≥6 channel tests), SC-004 (≥3 platform tests), SC-005 (no real native calls), SC-006 (broken placeholders replaced)
 
 ---
 

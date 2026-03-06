@@ -1,32 +1,9 @@
-/// [SimInfo] is a class that encapsulates information about a SIM card.
-/// The [SimInfo] class provides a factory constructor `fromJson` to create an instance from a JSON object.
-/// This is particularly useful when parsing JSON data received from an API.
-///
-/// The `toString` method is overridden to provide a string representation of the `SimInfo` object.
-/// This can be useful for debugging purposes.
-///
-/// The `==` operator is overridden to provide value equality. Two `SimInfo` objects are considered equal if all their properties are equal.
-///
-/// The `hashCode` getter is overridden to provide a hash code that is consistent with the `==` operator.
-/// This is important if you intend to use `SimInfo` objects as keys in a `Map` or insert them into a `Set`.
-
 class SimInfo {
-  /// [carrierName] : The name of the carrier.
   final String carrierName;
-
-  /// - displayName : The display name of the carrier.
   final String displayName;
-
-  ///  [slotIndex] : The index of the SIM card slot.
   final String slotIndex;
-
-  /// - [number] : The phone number associated with the SIM card.
   final String number;
-
-  /// - [countryIso] : The ISO country code associated with the SIM card.
   final String countryIso;
-
-  /// - [countryPhonePrefix] : The phone prefix for the country of the SIM card.
   final String countryPhonePrefix;
 
   SimInfo({
