@@ -67,18 +67,18 @@ class SimCardInfoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             return ("Permission denied")
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val subscriptionManager = context.getSystemService(SubscriptionManager::class.java)
             subscriptionManager?.activeSubscriptionInfoList?.let { subscriptionInfoList ->
-
                 for (info in subscriptionInfoList) {
                     writer.beginObject()
                     writer.name("carrierName").value(info.carrierName.toString())
                     writer.name("displayName").value(info.displayName.toString())
                     writer.name("slotIndex").value(info.simSlotIndex.toString())
 
-                    if (info.number != null || info.number != "") {
-                        writer.name("number").value(info.number.toString())
+                    if (info?.number != null && info?.number != "") {
+                        writer.name("number").value(info?.number.toString())
                     } else {
                         writer.name("number").value("")
                     }
@@ -91,12 +91,12 @@ class SimCardInfoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
             }
         } else {
-             writer.beginObject()
+            writer.beginObject()
             writer.name("carrierName").value(telephonyManager.networkOperatorName.toString())
             writer.name("displayName").value(telephonyManager.simOperatorName.toString())
             writer.name("slotIndex").value(telephonyManager.simSerialNumber.toString())
 
-            if (telephonyManager.line1Number != null || telephonyManager.line1Number.toString() != "") {
+            if (telephonyManager?.line1Number != null && telephonyManager?.line1Number.toString() != "") {
                 writer.name("number").value(telephonyManager.line1Number.toString())
             } else {
                 writer.name("number").value("")
